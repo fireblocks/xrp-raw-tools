@@ -1,0 +1,22 @@
+{
+  "name": "xrp_set_dest_tag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fireblocks-sdk": "^1.11.0",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "ripple-binary-codec": "^1.2.2",
+    "ripple-lib": "^1.10.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4",
+    "xrpl": "^2.7.0-beta.0"
+  }
+}
