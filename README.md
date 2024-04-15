@@ -76,13 +76,12 @@ Check the transaction's hash in the XRP block explorer and make sure that the tr
 If you want to disable an already enabled 'Require Destination Tags' configuration on your account, please update the `transaction` object in the `setDestTag.ts` file as following:
 
 ```js
- const transaction: TransactionJSON = {
+  const transaction: TransactionJSON = {
     "TransactionType": "AccountSet",
     "Account": account,
     "Fee": "1000",
-    "Domain": domain,
-    // "SetFlag": 1 // --> Enable Require Destination Tags 
-    "ClearFlag": 1 // --> Disable Require Destination Tags (remove SetFlag in this case)
+    //"SetFlag": 1 // --> Enable dest tag required 
+    "ClearFlag": 1 // --> Disable test tag required (remove SetFlag in this case)
   }
 ```
 
