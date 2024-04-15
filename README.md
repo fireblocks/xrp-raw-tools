@@ -10,8 +10,13 @@
 <br/>
 
 
-> :warning: **Warning:** This code example utilizes the Fireblocks RAW signing capability, which is an advanced feature not typically enabled in production environments. To access RAW signing, contact your Customer Success Manager to determine if it aligns with your specific needs. It's important to note that RAW signing carries unique security risks. Misuse or deviation from Fireblocks' recommended best practices may lead to security breaches. Clients employing RAW signing must be fully aware of these risks and acknowledge that Fireblocks cannot be held liable for any financial losses resulting from the use of RAW signing.
-
+> :warning: **Warning:** This code example utilizes the Fireblocks RAW signing feature. Raw Signing is an insecure signing method and is not generally recommended.  
+> Bad actors can trick someone into signing a valid transaction message and use it to steal funds.
+> 
+> For this reason, Raw Signing is a premium feature that requires an additional purchase and is not available in workspaces by default. 
+> If you're interested in this feature and want to see if your use case is eligible for it, please contact your Customer Success Manager.
+> 
+> [Fireblocks Sandbox](https://developers.fireblocks.com/docs/sandbox-quickstart)  workspaces have Raw Signing enabled by default to allow for testing purposes.
 <br/>
 <hr/>
 
