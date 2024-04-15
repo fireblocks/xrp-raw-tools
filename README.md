@@ -10,7 +10,9 @@
 <br/>
 
 
-> :warning: **Warning:** This code example utilizes the Fireblocks RAW signing feature. 
+> :warning: **Warning:** 
+> This code example utilizes the Fireblocks RAW signing feature. 
+> 
 > Raw Signing is an insecure signing method and is not generally recommended.  
 > Bad actors can trick someone into signing a valid transaction message and use it to steal funds.
 > 
