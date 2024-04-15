@@ -27,6 +27,7 @@ cd xrp_set_dest_tag
 Install:
 
 ```bash
+npm install -g typescript
 npm install
 ```
 
