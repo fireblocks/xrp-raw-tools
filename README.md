@@ -5,7 +5,7 @@
 
   [Fireblocks Developer Portal](https://developers.fireblocks.com) </br>
   [Fireblocks Sandbox Sign-up](https://www.fireblocks.com/developer-sandbox-sign-up/) <br/><br/>
-  <h1> Set 'Require Tag' configuration on your XRP account </h1>
+  <h1> Set 'Require Destination Tags' configuration on your XRP account </h1>
 </div>
 <br/>
 
@@ -24,7 +24,7 @@
 <hr/>
 
 
-## ✅ Set 'Require Tag' configuration:
+## ✅ Enabling 'Require Destination Tags' configuration:
 
 Clone the repo:
 ``` 
@@ -70,8 +70,8 @@ https://xrpscan.com/tx/<tx_id>
 ```
 Check the transaction's hash in the XRP block explorer and make sure that the transaction was executed successfully.
 
-## ❌ For disabling 'Require Tag':
-If you want to disable an already enabled 'Require Tag' configuration on your account, please update the `transaction` object in the `setDestTag.ts` file as following:
+## ❌ Disabling 'Require Destination Tags':
+If you want to disable an already enabled 'Require Destination Tags' configuration on your account, please update the `transaction` object in the `setDestTag.ts` file as following:
 
 ```js
  const transaction: TransactionJSON = {
@@ -79,8 +79,8 @@ If you want to disable an already enabled 'Require Tag' configuration on your ac
     "Account": account,
     "Fee": "1000",
     "Domain": domain,
-    // "SetFlag": 1 // --> Enable dest tag required 
-    "ClearFlag": 1 // --> Disable test tag required (remove SetFlag in this case)
+    // "SetFlag": 1 // --> Enable Require Destination Tags 
+    "ClearFlag": 1 // --> Disable Require Destination Tags (remove SetFlag in this case)
   }
 ```
 
