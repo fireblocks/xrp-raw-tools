@@ -5,7 +5,7 @@
 
   [Fireblocks Developer Portal](https://developers.fireblocks.com) </br>
   [Fireblocks Sandbox Sign-up](https://www.fireblocks.com/developer-sandbox-sign-up/) <br/><br/>
-  <h1> ✅ Set 'Require Tag' configuration on your XRP account </h1>
+  <h1> Set 'Require Tag' configuration on your XRP account </h1>
 </div>
 <br/>
 
@@ -24,7 +24,7 @@
 <hr/>
 
 
-## Set 'Require Tag' configuration:
+## ✅ Set 'Require Tag' configuration:
 
 Clone the repo:
 ``` 
