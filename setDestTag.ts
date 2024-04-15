@@ -9,9 +9,7 @@ require('dotenv').config();
 
 const API_KEY = process.env.FIREBLOCKS_API_KEY;
 const PATH_TO_SECRET_KEY = process.env.FIREBLOCKS_SECRET_KEY_PATH;
-
-// Change to your Vault Account ID
-const VAULT_ACCOUNT_ID: number = 1; 
+const VAULT_ACCOUNT_ID = process.env.VAULT_ACCOUNT_ID; 
 
 //Enter the domain name as a string, for example: test.com
 const DOMAIN: string = null 
@@ -45,7 +43,7 @@ async function createTx(account:string){
   await xrp_signer.signAndSubmitTransaction(
     api, 
     fireblocksApiClient, 
-    VAULT_ACCOUNT_ID, 
+    Number(VAULT_ACCOUNT_ID), 
     transaction,
     `Set destination tag required flag for vault account ${VAULT_ACCOUNT_ID}`
   )

@@ -31,15 +31,19 @@ npm install -g typescript
 npm install
 ```
 
-Edit the setDestTag.ts file:
+Create `.env` file and set:
+- FIREBLOCKS_API_KEY - your API Key
+- FIREBLOCKS_SECRET_KEY_PATH - path to your API secret key
+- VAULT_ACCOUNT_ID - the ID of the vault account to execute the RAW signing request from
 
+Example:
 ```bash
-API_KEY - your API Key
-PATH_TO_SECRET_KEY - the path to your RSA private key (for example: '~/secrets/fireblocks_secret.key')
-VAULT_ACCOUNT_ID - the vault account ID of the XRP wallet to set the require tag configuration
+FIREBLOCKS_API_KEY="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+FIREBLOCKS_SECRET_KEY_PATH="/path/to/secret_key/file.key"
+VAULT_ACCOUNT_ID=1 
 ```
 
-Run:
+Runnig the script:
 
 ```bash
 ts-node setDestTag.ts
