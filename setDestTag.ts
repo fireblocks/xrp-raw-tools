@@ -11,11 +11,6 @@ const API_KEY = process.env.FIREBLOCKS_API_KEY;
 const PATH_TO_SECRET_KEY = process.env.FIREBLOCKS_SECRET_KEY_PATH;
 const VAULT_ACCOUNT_ID = process.env.VAULT_ACCOUNT_ID; 
 
-//Enter the domain name as a string, for example: test.com
-const DOMAIN: string = null 
-
-
-
 // Initialize Fireblocks API Client
 const apiKey = API_KEY
 const apiSecret = fs.readFileSync(path.resolve(__dirname, PATH_TO_SECRET_KEY), "utf8"); 
@@ -28,14 +23,11 @@ const api = new RippleAPI({
 });
 
 async function createTx(account:string){
-
-  const domain: string = DOMAIN ? Buffer.from(DOMAIN.toLowerCase()).toString('hex').toUpperCase() : ""
   
   const transaction: TransactionJSON = {
     "TransactionType": "AccountSet",
     "Account": account,
     "Fee": "1000",
-    "Domain": domain,
     "SetFlag": 1 // --> Enable dest tag required 
     //"ClearFlag": 1 // --> Disable test tag required (remove SetFlag in this case)
   }
