@@ -70,6 +70,8 @@ https://xrpscan.com/tx/<tx_id>
 ```
 Check the transaction's hash in the XRP block explorer and make sure that the transaction was executed successfully.
 
+---
+
 ## ❌ Disabling 'Require Destination Tags':
 If you want to disable an already enabled 'Require Destination Tags' configuration on your account, please update the `transaction` object in the `setDestTag.ts` file as following:
 
