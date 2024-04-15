@@ -86,7 +86,7 @@ If you want to disable an already enabled 'Require Destination Tags' configurati
   }
 ```
 
-While `SetFlag: 1` enables 'Require Tag' option on your account, `ClearFlag: 1` disables it.
+While `SetFlag: 1` enables 'Require Destination Tags' configuration on your account, `ClearFlag: 1` disables it.
 
 ---
 
