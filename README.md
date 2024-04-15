@@ -37,7 +37,7 @@ Create `.env` file and set:
 - `VAULT_ACCOUNT_ID` - the ID of the vault account to execute the RAW signing request from
 
 Example:
-```json
+```bash
 FIREBLOCKS_API_KEY="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 FIREBLOCKS_SECRET_KEY_PATH="/path/to/secret_key/file.key"
 VAULT_ACCOUNT_ID=1 
