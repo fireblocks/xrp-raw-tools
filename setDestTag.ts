@@ -5,10 +5,13 @@ import * as fs from 'fs';
 import * as path from 'path'
 
 
-const API_KEY: string = '<your_api_key>';
-const PATH_TO_SECRET_KEY: string = '<path_to_secret_key>'
+require('dotenv').config();
 
-const VAULT_ACCOUNT_ID: number = <vault_account_id>;
+const API_KEY = process.env.FIREBLOCKS_API_KEY;
+const PATH_TO_SECRET_KEY = process.env.FIREBLOCKS_SECRET_KEY_PATH;
+
+// Change to your Vault Account ID
+const VAULT_ACCOUNT_ID: number = 1; 
 
 //Enter the domain name as a string, for example: test.com
 const DOMAIN: string = null 
