@@ -5,7 +5,7 @@
 
   [Fireblocks Developer Portal](https://developers.fireblocks.com) </br>
   [Fireblocks Sandbox Sign-up](https://www.fireblocks.com/developer-sandbox-sign-up/) <br/><br/>
-  <h1> Set 'Require Tag' configuration on your XRP account </h1>
+  <h1> ✅ Set 'Require Tag' configuration on your XRP account </h1>
 </div>
 <br/>
 
@@ -62,7 +62,7 @@ https://xrpscan.com/tx/<tx_id>
 ```
 Check the transaction's hash in the XRP block explorer and make sure that the transaction was executed successfully.
 
-## For disabling 'Require Tag':
+## ❌ For disabling 'Require Tag':
 If you want to disable an already enabled 'Require Tag' configuration on your account, please update the `transaction` object in the `setDestTag.ts` file as following:
 
 ```js
@@ -80,5 +80,5 @@ While `SetFlag: 1` enables 'Require Tag' option on your account, `ClearFlag: 1` 
 
 ---
 
-## Please NOTE:
+## 📌 NOTE:
 Since XRP transactions require `lastLedgerSequence` as a part of the transaction's body, when using RAW signing it is limited for a quite short period of time (up to 2 mins), which means that the transcation should be signed immediately after the submission. Waiting for longer signing time will result in unsuccessful transaction's broadcasting.
