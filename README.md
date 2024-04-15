@@ -32,9 +32,9 @@ npm install
 ```
 
 Create `.env` file and set:
-- FIREBLOCKS_API_KEY - your API Key
-- FIREBLOCKS_SECRET_KEY_PATH - path to your API secret key
-- VAULT_ACCOUNT_ID - the ID of the vault account to execute the RAW signing request from
+- `FIREBLOCKS_API_KEY` - your API Key
+- `FIREBLOCKS_SECRET_KEY_PATH` - path to your API secret key
+- `VAULT_ACCOUNT_ID` - the ID of the vault account to execute the RAW signing request from
 
 Example:
 ```bash
