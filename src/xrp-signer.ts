@@ -4,9 +4,11 @@ import * as xrp_utils from './xrp_utils'
 import { RippleAPI } from "ripple-lib";
 import * as binaryCodec from 'ripple-binary-codec';
 
+let ASSET_ID: string = "";
+export function setAssetId(assetId: string) {ASSET_ID = assetId;};
 
-
-
+let BLOCK_EXPLORER: string = "";
+export function setBlockExplorer(blockexplorerURL: string) {BLOCK_EXPLORER = blockexplorerURL;};
 
 export async function signRippleTransaction(
   fireblocksApiClient: FireblocksSDK,
@@ -14,7 +16,8 @@ export async function signRippleTransaction(
   txJSON: string,
   note: string
 ): Promise<{ signedTransaction: string; id: string }> {
-
+  
+  console.log(JSON.stringify(txJSON));  
   const tx = JSON.parse(txJSON);
 
   if (tx.TxnSignature || tx.Signers) {
@@ -27,7 +30,7 @@ export async function signRippleTransaction(
 
   const { publicKey } = await fireblocksApiClient.getPublicKeyInfoForVaultAccount({
     vaultAccountId,
-    assetId: "XRP",
+    assetId: ASSET_ID,
     change: 0,
     addressIndex: 0,
     compressed: true
@@ -40,7 +43,7 @@ export async function signRippleTransaction(
   // sign with Fireblocks RAW signing
   const { id, status } = await fireblocksApiClient.createTransaction({
     operation: TransactionOperation.RAW,
-    assetId: "XRP",
+    assetId: ASSET_ID,
     source: {
       type: PeerType.VAULT_ACCOUNT,
       id: vaultAccountId.toString()
@@ -100,29 +103,29 @@ export async function signAndSubmitTransaction(
   vaultAccountId: number,
   transaction: object,
   note: string) {
+    let tx = await rippleApi.prepareTransaction(transaction);
+    let jsonTx = JSON.parse(tx.txJSON);
+    jsonTx.LastLedgerSequence += 20;
+    let jsonToSign = JSON.stringify(jsonTx);
 
-  let tx = await rippleApi.prepareTransaction(transaction);
-  let jsonTx = JSON.parse(tx.txJSON);
-  jsonTx.LastLedgerSequence += 20;
-  let jsonToSign = JSON.stringify(jsonTx);
+    const { signedTransaction, id } = await signRippleTransaction(
+      fireblocksApiClient,
+      vaultAccountId,
+      jsonToSign,
+      note
+    );
 
-  const { signedTransaction, id } = await signRippleTransaction(
-    fireblocksApiClient,
-    vaultAccountId,
-    jsonToSign,
-    note
-  );
-  console.log("Transaction ID", id);
-  console.log("signed transaction", signedTransaction)
+    console.log("Transaction ID", id);
+    console.log("signed transaction", signedTransaction)
 
-  const result = await rippleApi.submit(signedTransaction).catch(err => {
-    console.log(err);
-  }
+    const result = await rippleApi.submit(signedTransaction).catch(err => {
+      console.log(err);
+    }
   )
 
   console.log("Result:", result)
   await new Promise(r => setTimeout(r, 3000));
-  console.log(`https://xrpscan.com/tx/${result.tx_json.hash}`)
+  console.log(BLOCK_EXPLORER + `/${result.tx_json.hash}`)
 };
 
 
@@ -130,7 +133,7 @@ export async function getAddress(fireblocksApiClient: FireblocksSDK, vaultAccoun
   return (
     await fireblocksApiClient.getDepositAddresses(
       vaultAccountId.toString(), 
-      "XRP"
+      ASSET_ID
     )
   )[0].address;
 }

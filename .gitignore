@@ -1,0 +1,15 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Apple crap 
+.DS_Store
+._*
+
+# nodejs modules
+node_modules/*
