@@ -119,8 +119,8 @@ export async function signAndSubmitTransaction(
     console.log("signed transaction", signedTransaction)
 
     const result = await rippleApi.submit(signedTransaction).catch(err => {
-    console.log(err);
-  }
+      console.log(err);
+    }
   )
 
   console.log("Result:", result)
