@@ -43,12 +43,13 @@ Create `.env` file and set:
 - `FIREBLOCKS_API_KEY` - your API Key
 - `FIREBLOCKS_SECRET_KEY_PATH` - path to your API secret key
 - `VAULT_ACCOUNT_ID` - the ID of the vault account to execute the RAW signing request from
+- `TESTNET` - (optional) to run on testnet instead of mainnet
 
 Example:
 ```bash
 FIREBLOCKS_API_KEY="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 FIREBLOCKS_SECRET_KEY_PATH="/path/to/secret_key/file.key"
-VAULT_ACCOUNT_ID=1 
+VAULT_ACCOUNT_ID=1
 ```
 
 Runnig the script:

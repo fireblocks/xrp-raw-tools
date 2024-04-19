@@ -9,7 +9,8 @@ require('dotenv').config();
 
 const API_KEY = process.env.FIREBLOCKS_API_KEY;
 const PATH_TO_SECRET_KEY = process.env.FIREBLOCKS_SECRET_KEY_PATH;
-const VAULT_ACCOUNT_ID = process.env.VAULT_ACCOUNT_ID; 
+const VAULT_ACCOUNT_ID = process.env.VAULT_ACCOUNT_ID;
+const testnet = !!process.env.TESTNET || false;
 
 // Initialize Fireblocks API Client
 const apiKey = API_KEY
@@ -19,7 +20,9 @@ const fireblocksApiClient = new FireblocksSDK(apiSecret, apiKey);
 const api = new RippleAPI({
   // Public ripple servers
   //'wss://xrplcluster.com', 'wss://s1.ripple.com'
-  server: 'wss://xrplcluster.com'
+  // Public testnet ripple servers:
+  //'wss://testnet.xrpl-labs.com'
+  server: testnet ? 'wss://testnet.xrpl-labs.com' : 'wss://xrplcluster.com'
 });
 
 async function createTx(account:string){
@@ -37,14 +40,15 @@ async function createTx(account:string){
     fireblocksApiClient, 
     Number(VAULT_ACCOUNT_ID), 
     transaction,
-    `Set destination tag required flag for vault account ${VAULT_ACCOUNT_ID}`
+    `Set destination tag required flag for vault account ${VAULT_ACCOUNT_ID}`,
+    testnet
   )
 }
 
 
 api.connect().then(async () => {
 
-  const account = await xrp_signer.getAddress(fireblocksApiClient, VAULT_ACCOUNT_ID);
+  const account = await xrp_signer.getAddress(fireblocksApiClient, VAULT_ACCOUNT_ID, testnet);
   await createTx(account)
   api.disconnect()
   
