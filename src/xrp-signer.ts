@@ -12,7 +12,8 @@ export async function signRippleTransaction(
   fireblocksApiClient: FireblocksSDK,
   vaultAccountId: number,
   txJSON: string,
-  note: string
+  note: string,
+  testnet: boolean
 ): Promise<{ signedTransaction: string; id: string }> {
 
   const tx = JSON.parse(txJSON);
@@ -27,7 +28,7 @@ export async function signRippleTransaction(
 
   const { publicKey } = await fireblocksApiClient.getPublicKeyInfoForVaultAccount({
     vaultAccountId,
-    assetId: "XRP",
+    assetId: testnet ? "XRP_TEST" : "XRP",
     change: 0,
     addressIndex: 0,
     compressed: true
@@ -40,7 +41,7 @@ export async function signRippleTransaction(
   // sign with Fireblocks RAW signing
   const { id, status } = await fireblocksApiClient.createTransaction({
     operation: TransactionOperation.RAW,
-    assetId: "XRP",
+    assetId: testnet ? "XRP_TEST" : "XRP",
     source: {
       type: PeerType.VAULT_ACCOUNT,
       id: vaultAccountId.toString()
@@ -99,7 +100,8 @@ export async function signAndSubmitTransaction(
   fireblocksApiClient: FireblocksSDK,
   vaultAccountId: number,
   transaction: object,
-  note: string) {
+  note: string,
+  testnet: boolean) {
 
   let tx = await rippleApi.prepareTransaction(transaction);
   let jsonTx = JSON.parse(tx.txJSON);
@@ -110,7 +112,8 @@ export async function signAndSubmitTransaction(
     fireblocksApiClient,
     vaultAccountId,
     jsonToSign,
-    note
+    note,
+    testnet
   );
   console.log("Transaction ID", id);
   console.log("signed transaction", signedTransaction)
@@ -122,15 +125,16 @@ export async function signAndSubmitTransaction(
 
   console.log("Result:", result)
   await new Promise(r => setTimeout(r, 3000));
-  console.log(`https://xrpscan.com/tx/${result.tx_json.hash}`)
+  const explorerBaseUrl = testnet ? 'https://testnet.xrpl.org/transactions' : 'https://xrpscan.com/tx'
+  console.log(`${explorerBaseUrl}/${result.tx_json.hash}`)
 };
 
 
-export async function getAddress(fireblocksApiClient: FireblocksSDK, vaultAccountId: any) {
+export async function getAddress(fireblocksApiClient: FireblocksSDK, vaultAccountId: any, testnet: boolean) {
   return (
     await fireblocksApiClient.getDepositAddresses(
       vaultAccountId.toString(), 
-      "XRP"
+      testnet ? "XRP_TEST" : "XRP"
     )
   )[0].address;
 }
